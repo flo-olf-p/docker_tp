@@ -22,7 +22,7 @@ def calculer_statistiques(articles):
 
     for i in range (0, len(articles), 1):
         nb_unites += articles[i][1]
-        valeur_totale += articles[i][2]
+        valeur_totale += articles[i][2] * articles[i][1]
 
          # Gestion des articles en rupture
         if(articles[i][1] == 0):
