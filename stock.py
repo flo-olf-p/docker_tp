@@ -11,7 +11,36 @@ def calculer_statistiques(articles):
     # TODO : calculer les cinq indicateurs demandes dans la fiche TP.
     # Renvoyer un dictionnaire avec ces cles :
     # references, unites, valeur, faibles, ruptures.
-    raise NotImplementedError("Completez calculer_statistiques.")
+    #raise NotImplementedError("Completez calculer_statistiques.")
+
+    dictionnaire = {}
+
+    nb_unites = 0
+    valeur_totale = 0
+    references_faibles = 0
+    references_ruptures = 0
+
+    for i in range (0, len(articles) - 1, 1):
+        nb_unites += articles[i][1]
+        valeur_totale += articles[i][2]
+
+        # Gestion des articles en stock bas
+        if(articles[1][1] < 5 and articles[1][1] != 0):
+            references_faibles += 1
+
+            # Gestion des articles en rupture
+            if(articles[1][1] == 0):
+                references_ruptures += 1
+
+
+    dictionnaire["references"] = len(articles)
+    dictionnaire["unites"] = nb_unites
+    dictionnaire["valeur"] = valeur_totale
+    dictionnaire["faibles"] = references_faibles
+    dictionnaire["ruptures"] = references_ruptures
+
+    return dictionnaire
+
 
 
 def lire_articles(source):
