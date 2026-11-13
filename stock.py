@@ -20,17 +20,18 @@ def calculer_statistiques(articles):
     references_faibles = 0
     references_ruptures = 0
 
-    for i in range (0, len(articles) - 1, 1):
+    for i in range (0, len(articles), 1):
         nb_unites += articles[i][1]
         valeur_totale += articles[i][2]
 
+         # Gestion des articles en rupture
+        if(articles[i][1] == 0):
+            references_ruptures += 1
         # Gestion des articles en stock bas
-        if(articles[1][1] < 5 and articles[1][1] != 0):
+        if(articles[i][1] < 5 and articles[i][1] != 0):
             references_faibles += 1
 
-            # Gestion des articles en rupture
-            if(articles[1][1] == 0):
-                references_ruptures += 1
+           
 
 
     dictionnaire["references"] = len(articles)
